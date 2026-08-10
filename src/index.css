@@ -118,6 +118,25 @@ button {
 .logout-button:hover {
   background: #d63378;
 }
+.form-group {
+  margin-bottom: 22px;
+}
+.login-error {
+  margin-top: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #fff0f5;
+  color: #d81b60;
+  border: 1px solid #f8b4d0;
+  font-size: 14px;
+}
+.form-group input {
+  transition: 0.2s;
+}
+.form-group input:focus {
+  border-color: #e83e8c;
+  box-shadow: 0 0 0 3px rgba(232, 62, 140, 0.12);
+}
 
 @media (max-width: 600px) {
   .login-form {

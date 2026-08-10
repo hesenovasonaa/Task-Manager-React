@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    if (email === "admin@example.com" && password === "123456") {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    if (
+      data.email === "admin@example.com" &&
+      data.password === "123456"
+    ) {
       const tokenData = {
         token: "mock-token",
         expiresAt: Date.now() + 5 * 60 * 1000,
@@ -20,31 +24,51 @@ function Login() {
       navigate("/dashboard");
       return;
     }
-    setError("Email və ya şifrə yanlışdır.");
+    setError("root", {
+      message: "Email və ya şifrə yanlışdır.",
+    });
   };
   return (
     <div className="login-page">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             id="email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email", {
+              required: "Email daxil edin",
+              pattern: {
+                value: /^\S+@\S+\.\S+$/,
+                message: "Düzgün email daxil edin",
+              },
+            })}
           />
+          {errors.email && (
+            <p className="login-error">{errors.email.message}</p>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="password">Şifrə</label>
           <input
             id="password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register("password", {
+              required: "Şifrə daxil edin",
+              minLength: {
+                value: 6,
+                message: "Şifrə ən azı 6 simvol olmalıdır",
+              },
+            })}
           />
+          {errors.password && (
+            <p className="login-error">{errors.password.message}</p>
+          )}
         </div>
-        {error && <p className="login-error">{error}</p>}
+        {errors.root && (
+          <p className="login-error">{errors.root.message}</p>
+        )}
         <button className="login-button" type="submit">
           Login
         </button>
