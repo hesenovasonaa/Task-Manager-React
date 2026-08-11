@@ -137,6 +137,77 @@ button {
   border-color: #e83e8c;
   box-shadow: 0 0 0 3px rgba(232, 62, 140, 0.12);
 }
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(190, 70, 100, 0.08);
+}
+.task-item h3 {
+  margin: 0;
+  color: #444;
+  font-size: 16px;
+}
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+.edit-button,
+.delete-button {
+  border: none;
+  padding: 7px 13px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.edit-button {
+  background: #f7b6c8;
+  color: #8f2948;
+}
+.edit-button:hover {
+  background: #ee9eb5;
+}
+.delete-button {
+  background: #f3d0d8;
+  color: #a52d4d;
+}
+.delete-button:hover {
+  background: #edb8c5;
+}
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+.task-form input {
+  flex: 1;
+  padding: 11px 13px;
+  border: 1px solid #e8b5c4;
+  border-radius: 7px;
+  outline: none;
+  background: white;
+}
+.task-form input:focus {
+  border-color: #d96b8a;
+}
+.add-task-button {
+  border: none;
+  padding: 11px 18px;
+  border-radius: 7px;
+  background: #d96b8a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.add-task-button:hover {
+  background: #c95777;
+}
 
 @media (max-width: 600px) {
   .login-form {
@@ -154,6 +225,23 @@ button {
     font-size: 26px;
   }
   .logout-button {
+    width: 100%;
+  }
+  .task-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .task-actions {
+    width: 100%;
+  }
+  .edit-button,
+  .delete-button {
+    flex: 1;
+  }
+  .task-form {
+    flex-direction: column;
+  }
+  .add-task-button {
     width: 100%;
   }
 }
