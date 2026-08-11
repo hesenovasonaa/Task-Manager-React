@@ -208,6 +208,38 @@ button {
 .add-task-button:hover {
   background: #c95777;
 }
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background: #fff5f7;
+}
+.error-page h1 {
+  margin-bottom: 12px;
+  color: #b83b5e;
+  font-size: 32px;
+}
+.error-page p {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 16px;
+}
+.error-page button {
+  border: none;
+  padding: 11px 22px;
+  border-radius: 7px;
+  background: #d96b8a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.error-page button:hover {
+  background: #c95777;
+}
 
 @media (max-width: 600px) {
   .login-form {
@@ -243,5 +275,11 @@ button {
   }
   .add-task-button {
     width: 100%;
+  }
+  .error-page h1 {
+    font-size: 26px;
+  }
+  .error-page p {
+    font-size: 14px;
   }
 }
