@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../auth/AuthContext";
 import {
   getTasks,
   createTask,
   updateTask,
   deleteTask,
-} from "../services/api";
+} from "./api";
 
 function Dashboard() {
   const navigate = useNavigate();
